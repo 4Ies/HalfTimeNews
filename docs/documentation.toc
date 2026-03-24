@@ -1,0 +1,4 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Before you read}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Needed Libraries and Software}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Project Structure}{2}{section.2}%
