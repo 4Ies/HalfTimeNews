@@ -2,12 +2,13 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QSizePolicy
 from PyQt6.QtCore import QVariantAnimation, QEasingCurve, QRectF, QThread, pyqtSignal, Qt
 from PyQt6.QtGui import QPainter, QColor, QPainterPath, QPen, QPixmap, QImage
 from datetime import datetime, timezone
+from ui.articleViewer import ArticleViewer
 import urllib.request
 
 CARD_COLORS = ["#A3DAFF", "#FFBA94", "#E5FFE9", "#FFF8E5", "#F3E5FF"]
 DARK_OVERLAY = 140  # 0 = fully transparent, 255 = fully black — tweak to taste
 
-
+# utility to make uniform labels
 def make_label(text, font_size, color="#000", bold=False, word_wrap=False, open_links=False):
     label = QLabel(text)
     label.setWordWrap(word_wrap)
@@ -18,12 +19,13 @@ def make_label(text, font_size, color="#000", bold=False, word_wrap=False, open_
     )
     return label
 
+# utility to catch recent news (3 hours)
 def _is_recent(date_timestamp, hours=3):
     """Returns True if the article is less than `hours` old."""
     now = datetime.now().timestamp()
     return (now - date_timestamp) < (hours * 3600)
 
-
+# thread to load images
 class ImageLoader(QThread):
     """Downloads image in background thread to avoid freezing the UI."""
     image_loaded = pyqtSignal(QPixmap)
@@ -42,7 +44,16 @@ class ImageLoader(QThread):
         except Exception:
             self.image_loaded.emit(QPixmap())  # emit empty pixmap on failure
 
+# to make labels clickable
+class ClickableLabel(QLabel):
+    clicked = pyqtSignal()
 
+    def mousePressEvent(self, event):
+        self.clicked.emit()
+
+
+
+# actual newscard object
 class NewsCard(QWidget):
 
     COLLAPSED_HEIGHT = 180
@@ -74,14 +85,17 @@ class NewsCard(QWidget):
             font_size=17, bold=True, word_wrap=True, color=text_color
         )
         title.setMaximumHeight(60)
-
-        content = make_label(
-            cluster[0].content[:100] + "...",
-            font_size=15, color=text_color, word_wrap=True
-        )
-        content.setMaximumHeight(60)
-
         layout.addWidget(title)
+
+        content = ClickableLabel(cluster[0].content[:100] + "...")
+        content.setWordWrap(True)
+        content.setMaximumHeight(60)
+        content.setStyleSheet(
+            f"font-size: 15px; color: {text_color}; background: transparent; border: none;"
+            f"text-decoration: underline;"
+        )
+        content.setCursor(Qt.CursorShape.PointingHandCursor)
+        content.clicked.connect(lambda: self._open_article(cluster[0].title, cluster[0].url))
         layout.addWidget(content)
 
         # --- Detail panel ---
@@ -122,6 +136,16 @@ class NewsCard(QWidget):
             self._loader = ImageLoader(cluster[0].image_url)
             self._loader.image_loaded.connect(self._on_image_loaded)
             self._loader.start()
+
+    def _open_article(self, title, url):
+        from PyQt6.QtWidgets import QMainWindow
+        top = self.window()
+        if isinstance(top, QMainWindow):
+            parent = top.centralWidget()
+        else:
+            parent = top
+        viewer = ArticleViewer(title, url, parent=parent)
+        viewer.raise_()
 
     def _on_image_loaded(self, pixmap):
         if not pixmap.isNull():

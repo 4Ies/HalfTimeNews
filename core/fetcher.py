@@ -13,7 +13,7 @@ RSS_WORLD_FEEDS = [
 
 RSS_TECH_FEEDS = [
     "https://feeds.feedburner.com/IeeeSpectrumFullText",
-    "https://www.wired.com/feed/rss",
+    "https://www.wired.com/feed/category/security/latest/rss",
     "https://www.theverge.com/rss/index.xml"
 ]
 
@@ -21,7 +21,9 @@ RSS_ITALIAN_FEEDS = [
     "https://www.ansa.it/sito/ansait_rss.xml",
     "https://www.repubblica.it/rss/homepage/rss2.0.xml",
     "https://www.lastampa.it/rss/copertina.xml",
-    "https://www.milanotoday.it/rss"
+    "https://www.milanotoday.it/rss",
+    "https://www.rainews.it/rss/politica",
+    "https://www.corriere.it/dynamic-feed/rss/section/Politica.xml"
 ]
 
 RSS_MUSIC_FEEDS = [
@@ -30,20 +32,22 @@ RSS_MUSIC_FEEDS = [
     "https://pitchfork.com/feed/reviews/best/tracks/rss"
 ]
 SOURCE_NAMES = {
-    "http://feeds.bbci.co.uk/news/world/rss.xml":           "BBC News",
-    "https://abcnews.com/abcnews/internationalheadlines":   "ABC News",
-    "https://www.cbsnews.com/latest/rss/world":             "CBS News",
-    "https://feeds.skynews.com/feeds/rss/world.xml":        "Sky News",
-    "https://feeds.feedburner.com/IeeeSpectrumFullText":    "IEEE Spectrum",
-    "https://www.wired.com/feed/rss":                       "Wired",
-    "https://www.theverge.com/rss/index.xml":               "The Verge",
-    "https://www.ansa.it/sito/ansait_rss.xml":              "ANSA",
-    "https://www.repubblica.it/rss/homepage/rss2.0.xml":    "La Repubblica",
-    "https://www.lastampa.it/rss/copertina.xml":            "La Stampa",
-    "https://www.milanotoday.it/rss":                       "Milano Today",
-    "https://pitchfork.com/feed/reviews/best/albums/rss":   "Pitchfork Albums",
-    "https://pitchfork.com/feed/reviews/best/reissues/rss": "Pitchfork Reissues",
-    "https://pitchfork.com/feed/reviews/best/tracks/rss":   "Pitchfork Tracks"
+    "http://feeds.bbci.co.uk/news/world/rss.xml":                       "BBC News",
+    "https://abcnews.com/abcnews/internationalheadlines":               "ABC News",
+    "https://www.cbsnews.com/latest/rss/world":                         "CBS News",
+    "https://feeds.skynews.com/feeds/rss/world.xml":                    "Sky News",
+    "https://feeds.feedburner.com/IeeeSpectrumFullText":                "IEEE Spectrum",
+    "https://www.wired.com/feed/category/security/latest/rss":          "Wired",
+    "https://www.theverge.com/rss/index.xml":                           "The Verge",
+    "https://www.ansa.it/sito/ansait_rss.xml":                          "ANSA",
+    "https://www.repubblica.it/rss/homepage/rss2.0.xml":                "La Repubblica",
+    "https://www.lastampa.it/rss/copertina.xml":                        "La Stampa",
+    "https://www.milanotoday.it/rss":                                   "Milano Today",
+    "https://www.rainews.it/rss/politica":                              "Rai News",
+    "https://www.corriere.it/dynamic-feed/rss/section/Politica.xml":    "Il Corriere della Sera",
+    "https://pitchfork.com/feed/reviews/best/albums/rss":               "Pitchfork Albums",
+    "https://pitchfork.com/feed/reviews/best/reissues/rss":             "Pitchfork Reissues",
+    "https://pitchfork.com/feed/reviews/best/tracks/rss":               "Pitchfork Tracks"
 
 }
 
