@@ -14,7 +14,8 @@ RSS_WORLD_FEEDS = [
 RSS_TECH_FEEDS = [
     "https://feeds.feedburner.com/IeeeSpectrumFullText",
     "https://www.wired.com/feed/category/security/latest/rss",
-    "https://www.theverge.com/rss/index.xml"
+    "https://www.theverge.com/rss/index.xml",
+    "https://feeds.arstechnica.com/arstechnica/index"
 ]
 
 RSS_ITALIAN_FEEDS = [
@@ -39,6 +40,7 @@ SOURCE_NAMES = {
     "https://feeds.feedburner.com/IeeeSpectrumFullText":                "IEEE Spectrum",
     "https://www.wired.com/feed/category/security/latest/rss":          "Wired",
     "https://www.theverge.com/rss/index.xml":                           "The Verge",
+    "https://feeds.arstechnica.com/arstechnica/index":                  "Ars Technica",
     "https://www.ansa.it/sito/ansait_rss.xml":                          "ANSA",
     "https://www.repubblica.it/rss/homepage/rss2.0.xml":                "La Repubblica",
     "https://www.lastampa.it/rss/copertina.xml":                        "La Stampa",
@@ -105,7 +107,8 @@ def _fetch_from_feeds(feed_urls):
             title   = getattr(entry, "title",   None) or "Empty Title"
             summary = getattr(entry, "summary", None) or "Empty Summary"
             link    = getattr(entry, "link",    None) or "Empty URL"
-            date = calendar.timegm(entry.published_parsed) if entry.get("published_parsed") else 0
+            parsed_date = getattr(entry, "published_parsed", None)
+            date = calendar.timegm(parsed_date) if parsed_date is not None else 0
 
 
             articles.append(Article(

@@ -9,7 +9,7 @@ def cluster_articles(articles):
     vectorizer = TfidfVectorizer(stop_words="english")
     X = vectorizer.fit_transform(texts)
     
-    clustering = AgglomerativeClustering(n_clusters=None,distance_threshold=1.2) # default threshold = 1.2
+    clustering = AgglomerativeClustering(n_clusters=None,distance_threshold=1.3) # default threshold = 1.2
     labels = clustering.fit_predict(np.asarray(X.todense())) #conversion with numpy needed because X is large sparse
     
     clusters = {}

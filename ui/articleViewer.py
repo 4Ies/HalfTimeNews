@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import (
     QPushButton, QScrollArea, QSizePolicy
 )
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
-from PyQt6.QtGui import QFont, QPainter, QColor
+from PyQt6.QtGui import QPainter, QColor
 import urllib.request
 from bs4 import BeautifulSoup
 

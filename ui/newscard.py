@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QSizePolicy
 from PyQt6.QtCore import QVariantAnimation, QEasingCurve, QRectF, QThread, pyqtSignal, Qt
 from PyQt6.QtGui import QPainter, QColor, QPainterPath, QPen, QPixmap, QImage
-from datetime import datetime, timezone
+from datetime import datetime
 from ui.articleViewer import ArticleViewer
 import urllib.request
 

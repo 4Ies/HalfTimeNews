@@ -1,6 +1,5 @@
 # ui/mainpage.py
 from PyQt6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QScrollArea
-from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 from core.pipeline import *
 from ui.newscard import NewsCard, CARD_COLORS
@@ -49,16 +48,16 @@ class MainWindow(QMainWindow):
 
         mainLayout = QVBoxLayout()
 
-        mainLayout.addWidget(make_label("Half Time News", font_size=80, bold=True, fixed_height=70))
+        mainLayout.addWidget(make_label("◈ Half Time News", font_size=80, bold=True, fixed_height=90))
+
+        mainLayout.addWidget(make_label("Italian News", font_size=40, bold=True, fixed_height=60))
+        mainLayout.addWidget(make_news_section(get_italian_news_clusters(), color=CARD_COLORS[2]))
 
         mainLayout.addWidget(make_label("World News", font_size=40, bold=True, fixed_height=60))
         mainLayout.addWidget(make_news_section(get_world_news_clusters(), color=CARD_COLORS[0]))
 
         mainLayout.addWidget(make_label("Tech News", font_size=40, bold=True, fixed_height=60))
         mainLayout.addWidget(make_news_section(get_tech_news_clusters(), color=CARD_COLORS[1]))
-
-        mainLayout.addWidget(make_label("Italian News", font_size=40, bold=True, fixed_height=60))
-        mainLayout.addWidget(make_news_section(get_italian_news_clusters(), color=CARD_COLORS[2]))
 
         mainLayout.addWidget(make_label("Latest Music", font_size=40, bold=True, fixed_height=60))
         mainLayout.addWidget(make_news_section(get_music_news_clusters(), color=CARD_COLORS[3]))
