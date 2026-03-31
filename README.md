@@ -5,8 +5,8 @@ are hardcoded inside fetcher.py and can be changed in any way.
 ## Developement and Prerequisites
 The program is composed by a main python file and it has been implemented on ubuntu using venv. To replicate my setup, clone this repository, setup venv and activate it inside the desired folder with this command:
 ```bash
-git clone https://github.com/4Ies/newsagg.git
-cd newsagg
+git clone https://github.com/4Ies/HalfTimeNews.git
+cd HalfTimeNews
 python3 -m venv venv
 source venv/bin/activate
 ```
